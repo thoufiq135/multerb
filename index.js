@@ -7,7 +7,8 @@ const multer=require("multer")
 const app=express()
 app.use(cors({
     origin:"https://multerb1.vercel.app/",
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
 
 
 }))
