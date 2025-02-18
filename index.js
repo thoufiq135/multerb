@@ -6,7 +6,7 @@ const mongoo=require("mongoose")
 const multer=require("multer")
 const app=express()
 app.use(cors({
-    origin:"https://multerb2.vercel.app/",
+    origin:"https://multerf2-five.vercel.app/",
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 
