@@ -62,6 +62,25 @@ app.post("/upload",upload.single("file"),async (req,res)=>{
         console.log(e)
     }
 })
+app.post("/upload/view",async(req,res)=>{
+    const Name=req.body
+    console.log(Name.Name)
+    try{
+        const mdata=await model.find({name:Name.Name})
+    if(mdata){
+        const rebuff=Buffer.from(mdata[0].file,"base64")
+        console.log(rebuff)
+        console.log(mdata[0].mimetype)
+        res.set("Content-Type", mdata[0].mimetype || "application/octet-stream");
+        res.set("Content-Disposition", `attachment; filename=${Name.Name}`);
+        res.send(rebuff)
+    }else{
+        res.status(401).json({message:"err"})
+    }
+    }catch(e){
+        console.log(e)
+    }
+})
 app.get("/",(req,res)=>{
     res.send("<h1>Hello world</h1>")
 })
